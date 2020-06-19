@@ -1,0 +1,15 @@
+dist: bionic
+language: python
+
+jobs:
+  fast_finish: true
+  include:
+    - python: '3.8'
+      env: TOX_ENV=py38
+
+install:
+    - travis_retry pip install tox tox-venv
+    - python -VV
+
+script:
+    - "tox -e $TOX_ENV -- $TOX_ARGS"
